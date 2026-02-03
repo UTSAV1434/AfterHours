@@ -242,4 +242,173 @@ app.delete("/make-server-70a0f2b1/posts/:id", async (c) => {
   }
 });
 
+// ============= USER AUTHENTICATION =============
+
+// Simple hash function for passwords (basic security)
+function hashPassword(password: string): string {
+  let hash = 0;
+  for (let i = 0; i < password.length; i++) {
+    const char = password.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return hash.toString(36) + '_' + password.length;
+}
+
+// Register new user
+app.post("/make-server-70a0f2b1/auth/register", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { username, password } = body;
+
+    if (!username || !password) {
+      return c.json({ error: "Username and password are required" }, 400);
+    }
+
+    if (username.length < 3 || username.length > 20) {
+      return c.json({ error: "Username must be 3-20 characters" }, 400);
+    }
+
+    if (password.length < 4) {
+      return c.json({ error: "Password must be at least 4 characters" }, 400);
+    }
+
+    // Check if username already exists
+    const existingUser = await kv.get(`user:${username.toLowerCase()}`);
+    if (existingUser) {
+      return c.json({ error: "Username already taken" }, 409);
+    }
+
+    // Create new user
+    const user = {
+      username: username.toLowerCase(),
+      displayName: username,
+      passwordHash: hashPassword(password),
+      createdAt: Date.now()
+    };
+
+    await kv.set(`user:${username.toLowerCase()}`, user);
+    console.log(`User registered: ${username}`);
+
+    return c.json({
+      success: true,
+      user: { username: user.username, displayName: user.displayName }
+    });
+  } catch (error) {
+    console.log(`Error registering user: ${error}`);
+    return c.json({ error: "Failed to register user", details: String(error) }, 500);
+  }
+});
+
+// Login user
+app.post("/make-server-70a0f2b1/auth/login", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { username, password } = body;
+
+    if (!username || !password) {
+      return c.json({ error: "Username and password are required" }, 400);
+    }
+
+    const user = await kv.get(`user:${username.toLowerCase()}`);
+    if (!user) {
+      return c.json({ error: "Invalid username or password" }, 401);
+    }
+
+    if (user.passwordHash !== hashPassword(password)) {
+      return c.json({ error: "Invalid username or password" }, 401);
+    }
+
+    console.log(`User logged in: ${username}`);
+    return c.json({
+      success: true,
+      user: { username: user.username, displayName: user.displayName }
+    });
+  } catch (error) {
+    console.log(`Error logging in: ${error}`);
+    return c.json({ error: "Failed to login", details: String(error) }, 500);
+  }
+});
+
+// Admin authentication
+app.post("/make-server-70a0f2b1/auth/admin", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { password } = body;
+
+    const ADMIN_PASSWORD = "apyx123";
+
+    if (password !== ADMIN_PASSWORD) {
+      return c.json({ error: "Invalid admin password" }, 401);
+    }
+
+    console.log("Admin authenticated");
+    return c.json({ success: true });
+  } catch (error) {
+    console.log(`Error admin auth: ${error}`);
+    return c.json({ error: "Failed to authenticate", details: String(error) }, 500);
+  }
+});
+
+// ============= TIMING CONFIGURATION =============
+
+// Get timing settings
+app.get("/make-server-70a0f2b1/config/timings", async (c) => {
+  try {
+    let timings = await kv.get("config:timings");
+
+    // Default timings if not set
+    if (!timings) {
+      timings = {
+        postingWindowStart: 0,   // 12 AM
+        postingWindowEnd: 5,     // 5 AM
+        nightModeStart: 0,       // 12 AM
+        nightModeEnd: 6          // 6 AM
+      };
+    }
+
+    return c.json({ timings });
+  } catch (error) {
+    console.log(`Error fetching timings: ${error}`);
+    return c.json({ error: "Failed to fetch timings", details: String(error) }, 500);
+  }
+});
+
+// Update timing settings (admin only)
+app.post("/make-server-70a0f2b1/config/timings", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { postingWindowStart, postingWindowEnd, nightModeStart, nightModeEnd, adminPassword } = body;
+
+    // Verify admin password
+    const ADMIN_PASSWORD = "apyx123";
+    if (adminPassword !== ADMIN_PASSWORD) {
+      return c.json({ error: "Unauthorized" }, 401);
+    }
+
+    // Validate timing values (0-23 hours)
+    const validateHour = (h: number) => typeof h === 'number' && h >= 0 && h <= 23;
+
+    if (!validateHour(postingWindowStart) || !validateHour(postingWindowEnd) ||
+      !validateHour(nightModeStart) || !validateHour(nightModeEnd)) {
+      return c.json({ error: "Invalid timing values. Hours must be 0-23" }, 400);
+    }
+
+    const timings = {
+      postingWindowStart,
+      postingWindowEnd,
+      nightModeStart,
+      nightModeEnd
+    };
+
+    await kv.set("config:timings", timings);
+    console.log("Timings updated:", timings);
+
+    return c.json({ success: true, timings });
+  } catch (error) {
+    console.log(`Error updating timings: ${error}`);
+    return c.json({ error: "Failed to update timings", details: String(error) }, 500);
+  }
+});
+
 Deno.serve(app.fetch);

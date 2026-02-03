@@ -1,4 +1,5 @@
 import { Moon, Clock } from 'lucide-react';
+import { AmbientSound } from './AmbientSound';
 
 export function LeftSidebar() {
   const isOpen = () => {
@@ -18,11 +19,14 @@ export function LeftSidebar() {
           </div>
           <h1 className="text-xl font-semibold text-foreground">Night Thoughts</h1>
         </div>
-        
+
         <p className="text-sm text-muted-foreground leading-relaxed">
           A safe space for your afternoon thoughts. Share anonymously between 12 PM – 5 PM.
         </p>
       </div>
+
+      {/* Ambient Sound Controls */}
+      <AmbientSound />
 
       {/* Status Card */}
       <div className="bg-card rounded-xl p-6 shadow-lg border border-border">
@@ -30,16 +34,16 @@ export function LeftSidebar() {
           <h3 className="text-sm font-medium text-foreground">Status</h3>
           <Clock className="w-4 h-4 text-muted-foreground" />
         </div>
-        
+
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${isOpen() ? 'bg-green-500' : 'bg-red-500'} animate-pulse`} />
           <span className={`text-sm font-medium ${isOpen() ? 'text-green-400' : 'text-red-400'}`}>
             {isOpen() ? 'Open' : 'Closed'}
           </span>
         </div>
-        
+
         <p className="text-xs text-muted-foreground mt-2">
-          {isOpen() 
+          {isOpen()
             ? 'Share your thoughts now'
             : 'Come back between 12 PM – 5 PM'}
         </p>
