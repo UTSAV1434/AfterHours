@@ -32,6 +32,7 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 *   Reports table
 *   Banned IPs table
 *   Active users tracking
+*  No login use Anonoymous
 
 ### ⚙️ Admin Control Panel
 *   **Time Travel**: Admins can override the "Night Mode" schedule.
