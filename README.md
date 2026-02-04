@@ -95,8 +95,13 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 
 ---
 
-*Built for the TECHX26 Hackathon*
-*Team APYX*
+*  *Built for the TECHX26 Hackathon*
+![Uploading WhatsApp Image 2026-02-04 at 07.40.02.jpeg…]()
+
+
+  
+*  *Team APYX*
+![WhatsApp Image 2026-02-04 at 07 40 03](https://github.com/user-attachments/assets/b0a99931-de62-4e86-91d3-692588ea027e)
 
 *  Aryan Pandey (Leader)
 *  Utsav Kumnar
