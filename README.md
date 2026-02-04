@@ -80,6 +80,8 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 2.  **Admin Panel**: Navigate to `/admin` and login with password:
 3.  **Control Time**: Use the sliders to change "Night Mode" hours.
 4.  **Observe**: Watch the background transform instantly!
+![WhatsApp Image 2026-02-04 at 07 36 23](https://github.com/user-attachments/assets/db6cd0bb-e3f0-4676-bb9a-b0c45f2090f0)
+
 
 ---
 
