@@ -92,7 +92,7 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 *   **Styling**: Tailwind CSS, Lucide React (Icons)
 *   **State**: Context API + Local Storage Persistence
 *   **Backend**: Supabase Edge Functions (Ready for integration)
-*   **Deployment**: Vercel
+*   **Deployment**: Netlify
 
 ---
 
