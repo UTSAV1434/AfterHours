@@ -2,23 +2,36 @@
 
 **AfterHours** is a unique, time-sensitive social platform designed for shared late-night thoughts. It's not just another feed—it's a digital space that transforms when the sun goes down.
 
-![Project Banner](https://images.unsplash.com/photo-1532975549065-22d7a5b3a869?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3)
-
 ---
 
 ## 🌌 Core Concept: Day vs. Night
 
 AfterHours features a dynamic **Night Mode** that changes the entire atmosphere of the application based on real-time clock settings (or Admin control).
 
-*   **By Day**: A serene, video-based ambient background (Rainy Window).
 *   **By Night**: An immersive, animated starry sky glassmorphism interface.
+<img width="1886" height="905" alt="Screenshot 2026-02-04 030609" src="https://github.com/user-attachments/assets/df87d3b1-2cf0-4589-8bfb-65d7f93f54b3" />
+
+*   **By Day**: A serene, video-based ambient background (Rainy Window).
+<img width="1916" height="1079" alt="Screenshot 2026-02-04 031153" src="https://github.com/user-attachments/assets/144b1386-8527-4491-bdaa-5ebb94ba1232" />
+
 
 ## ✨ Key Features
 
 ### 🔐 User Experience
+*    **Night Mode** : Chat section open only at 12AM to 6AM and erases all data after this time period.
+*   **12am-5am Night Feed (Persistent)** : Auto-delete posts after 24 hours
 *   **Authentication**: Secure login and registration system.
 *   **Glassmorphism UI**: Premium, modern interface with blur effects and gradients.
 *   **Dynamic Backgrounds**: Visuals that adapt to the time of day.
+*   **Lack of Intimacy**: Daytime feeds are noisy and chaotic, lacking a dedicated space for quieter, late-night thoughts.
+*   Implement mood reactions (❤️ 😂 😢 😡)
+*   Implement category selection (Stress, Love, Rant, Motivation)
+*    Add 200 character limit validation
+*   Bad words filter function
+*   IP rate limiting function
+*   Reports table
+*   Banned IPs table
+*   Active users tracking
 
 ### ⚙️ Admin Control Panel
 *   **Time Travel**: Admins can override the "Night Mode" schedule.
@@ -64,7 +77,7 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 ## 🎮 How to Demo
 
 1.  **Register**: Go to `/login` and create a new account.
-2.  **Admin Panel**: Navigate to `/admin` and login with password: `apyx123`.
+2.  **Admin Panel**: Navigate to `/admin` and login with password:
 3.  **Control Time**: Use the sliders to change "Night Mode" hours.
 4.  **Observe**: Watch the background transform instantly!
 
@@ -80,4 +93,12 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 
 ---
 
-*Built for the Hackathon 2026*
+*Built for the TECHX26 Hackathon*
+*Team APYX*
+
+Aryan Pandey (Leader)
+Utsav Kumnar
+Pranjal
+Adarsh Dubey
+
+Deployment Link: https://stellular-nougat-bc4b9f.netlify.app/
