@@ -98,9 +98,9 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 *Built for the TECHX26 Hackathon*
 *Team APYX*
 
-Aryan Pandey (Leader)
-Utsav Kumnar
-Pranjal
-Adarsh Dubey
+*  Aryan Pandey (Leader)
+*  Utsav Kumnar
+*  Pranjal
+*  Adarsh Dubey
 
 Deployment Link: https://stellular-nougat-bc4b9f.netlify.app/
