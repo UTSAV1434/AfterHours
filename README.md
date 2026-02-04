@@ -96,7 +96,8 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 ---
 
 *  *Built for the TECHX26 Hackathon*
-![Uploading WhatsApp Image 2026-02-04 at 07.40.02.jpeg…]()
+![WhatsApp Image 2026-02-04 at 07 40 02](https://github.com/user-attachments/assets/76e2c15b-22e8-49f9-b649-4f6209c610db)
+
 
 
   
