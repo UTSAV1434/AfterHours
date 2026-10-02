@@ -1,3 +1,4 @@
+Deployment Link: https://stellular-nougat-bc4b9f.netlify.app/
 # 🌙 AfterHours: The Midnight Social Network
 
 **AfterHours** is a unique, time-sensitive social platform designed for shared late-night thoughts. It's not just another feed—it's a digital space that transforms when the sun goes down.
@@ -99,16 +100,3 @@ AfterHours features a dynamic **Night Mode** that changes the entire atmosphere 
 *  *Built for the TECHX26 Hackathon*
 
 ![WhatsApp Image 2026-02-04 at 07 40 02](https://github.com/user-attachments/assets/76e2c15b-22e8-49f9-b649-4f6209c610db)
-
-
-
-  
-*  *Team APYX*
-![WhatsApp Image 2026-02-04 at 07 40 03](https://github.com/user-attachments/assets/b0a99931-de62-4e86-91d3-692588ea027e)
-
-*  Aryan Pandey (Leader)
-*  Utsav Kumnar
-*  Pranjal
-*  Adarsh Dubey
-
-Deployment Link: https://stellular-nougat-bc4b9f.netlify.app/
